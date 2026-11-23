@@ -38,7 +38,7 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
 
-.bio{position:relative;min-height:100vh;min-height:100svh;max-width:980px;margin:0 auto;padding:max(22px,env(safe-area-inset-top)) var(--pad) max(20px,env(safe-area-inset-bottom));display:grid;grid-template-rows:auto auto auto minmax(264px,1fr) auto;gap:clamp(16px,2.6svh,28px)}
+.bio{position:relative;min-height:100vh;min-height:100svh;max-width:980px;margin:0 auto;padding:max(22px,env(safe-area-inset-top)) var(--pad) max(20px,env(safe-area-inset-bottom));display:grid;grid-template-rows:auto auto auto minmax(236px,1fr) auto;gap:clamp(16px,2.6svh,28px)}
 
 /* topo */
 .top{display:grid;justify-items:center;gap:10px;text-align:center}
@@ -52,21 +52,21 @@ img{display:block;max-width:100%}
 .q span{color:var(--mute)}
 
 /* destaque da Black: o grupo fechado */
-.black{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:13px 14px 13px 16px;border:1px solid var(--gold);border-radius:4px;overflow:hidden;isolation:isolate;
+.black{position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:11px;padding:14px 14px 14px 16px;border:1px solid var(--gold);border-radius:4px;overflow:hidden;isolation:isolate;
   background:linear-gradient(105deg,rgba(138,95,34,.34) 0%,rgba(201,160,90,.12) 46%,rgba(11,10,9,.3) 100%);-webkit-tap-highlight-color:transparent;transition:transform .5s var(--ease),border-color .5s var(--ease)}
 .black::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 40%,rgba(253,242,186,.22) 50%,transparent 60%);background-size:300% 100%;background-position:140% 0;animation:shine 5.2s 2.4s ease-in-out infinite}
 .black-t{display:grid;gap:3px;min-width:0}
 .black-k{font-family:'IBM Plex Mono',monospace;font-size:clamp(8.5px,2.3vw,10px);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-hi)}
 .black-n{font-family:'Cinzel',serif;font-weight:500;font-size:clamp(19px,5.4vw,26px);letter-spacing:.1em;line-height:1.15;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .black-s{font-size:clamp(12.5px,3.3vw,15px);line-height:1.35;color:var(--bone)}
-.black i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--ink);transition:transform .5s var(--ease)}
-.black svg{width:15px;height:15px}
+.black-b{display:flex;align-items:center;justify-content:center;gap:10px;height:46px;border-radius:999px;background:linear-gradient(180deg,#ECC37D,#C9A05A);color:#0B0A09;font-weight:600;font-size:15.5px;letter-spacing:-.01em;animation:pulse 2.6s 3.2s ease-in-out infinite}
+.black-b svg{width:15px;height:15px;transition:transform .5s var(--ease)}
 .black:active{transform:scale(.985)}
-@media(hover:hover) and (pointer:fine){.black:hover{border-color:var(--gold-hi)}.black:hover i{transform:translateX(3px)}}
+@media(hover:hover) and (pointer:fine){.black:hover{border-color:var(--gold-hi)}.black:hover .black-b svg{transform:translateX(4px)}}
 
 /* as duas portas: as colunas do H */
 .doors{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--gap);min-height:0}
-.door{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:264px;overflow:hidden;background:var(--ink-2);border:1px solid var(--line);border-radius:3px;isolation:isolate;-webkit-tap-highlight-color:transparent;transition:border-color .5s var(--ease),transform .5s var(--ease)}
+.door{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:236px;overflow:hidden;background:var(--ink-2);border:1px solid var(--line);border-radius:3px;isolation:isolate;-webkit-tap-highlight-color:transparent;transition:border-color .5s var(--ease),transform .5s var(--ease)}
 .door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06) brightness(.82);transform:scale(1.03);transition:transform 1.2s var(--ease),filter .8s var(--ease);z-index:-3}
 .door.proc img{object-position:42% 22%}
 .door.ment img{object-position:60% 30%}
@@ -109,7 +109,8 @@ img{display:block;max-width:100%}
 
 @media(min-width:800px){
   .bio{grid-template-rows:auto auto auto minmax(340px,1fr) auto;padding-top:34px;padding-bottom:28px}
-  .black{max-width:620px;width:100%;justify-self:center;padding:16px 18px 16px 22px}
+  .black{max-width:620px;width:100%;justify-self:center;padding:16px 18px 16px 22px;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px}
+  .black-b{padding:0 24px}
   .door{border-radius:4px}
   .door-t{gap:8px}
 }
@@ -120,6 +121,7 @@ img{display:block;max-width:100%}
 @keyframes rise{from{clip-path:inset(100% 0 0 0);opacity:.2}to{clip-path:inset(0 0 0 0);opacity:1}}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes span{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(236,195,125,0)}50%{box-shadow:0 0 0 7px rgba(236,195,125,.16)}}
 @keyframes shine{0%,62%{background-position:140% 0}100%{background-position:-60% 0}}
 .top{animation:fade .9s var(--ease) .05s both}
 .black{animation:fade .9s var(--ease) .14s both}
@@ -165,9 +167,9 @@ img{display:block;max-width:100%}
     <span class="black-t">
       <span class="black-k">Black · 26 e 27 de novembro</span>
       <strong class="black-n">LISTA BLACK</strong>
-      <span class="black-s">As portas abrem dia 26. Entre no grupo.</span>
+      <span class="black-s">As portas abrem dia 26.</span>
     </span>
-    <i><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></svg></i>
+    <span class="black-b">Clique aqui para entrar no grupo <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
   </a>
 
   <h1 class="q">por onde você <span>quer entrar?</span></h1>
